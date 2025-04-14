@@ -24,5 +24,19 @@ public class PedidoController {
     public Pedido criar(@RequestBody PedidoDTO dto) {
         return pedidoService.criarPedido(dto);
     }
+
+    @PutMapping("/{id}")
+    public Pedido editar(@PathVariable Long id, @RequestBody PedidoDTO dto) {
+        return pedidoService.editarPedido(id, dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void remover(@PathVariable Long id) {
+        pedidoService.removerPedido(id);
+    }
+    @GetMapping("/{id}")
+    public Pedido buscarPorId(@PathVariable Long id) {
+        return pedidoService.buscarPorId(id);
+    }
 }
 

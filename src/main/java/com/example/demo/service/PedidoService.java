@@ -32,5 +32,27 @@ public class PedidoService {
         pedido.setProdutos(produtoRepository.findAllById(dto.getProdutoIds()));
         return pedidoRepository.save(pedido);
     }
+
+    public Pedido editarPedido(Long id, PedidoDTO dto) {
+        Pedido pedido = pedidoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
+
+        pedido.setCliente(clienteRepository.findById(dto.getClienteId())
+                .orElseThrow(() -> new RuntimeException("Cliente não encontrado")));
+        pedido.setProdutos(produtoRepository.findAllById(dto.getProdutoIds()));
+        return pedidoRepository.save(pedido);
+    }
+
+    public void removerPedido(Long id) {
+        if (!pedidoRepository.existsById(id)) {
+            throw new RuntimeException("Pedido não encontrado");
+        }
+        pedidoRepository.deleteById(id);
+    }
+
+    public Pedido buscarPorId(Long id) {
+        return pedidoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
+    }
 }
 

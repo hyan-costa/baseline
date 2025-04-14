@@ -19,4 +19,20 @@ public class ClienteService {
     public Cliente salvar(Cliente cliente) {
         return clienteRepository.save(cliente);
     }
+
+
+    public Cliente buscarPorId(Long id) {
+        return clienteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+    }
+
+    public Cliente atualizar(Long id, Cliente clienteAtualizado) {
+        Cliente cliente = buscarPorId(id);
+        cliente.setNome(clienteAtualizado.getNome());
+        return clienteRepository.save(cliente);
+    }
+
+    public void deletar(Long id) {
+        clienteRepository.deleteById(id);
+    }
 }

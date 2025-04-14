@@ -23,4 +23,20 @@ public class ProdutoController {
     public Produto salvar(@RequestBody Produto produto) {
         return produtoService.salvar(produto);
     }
+
+    @GetMapping("/{id}")
+    public Produto buscarPorId(@PathVariable Long id) {
+        return produtoService.buscarPorId(id);
+    }
+
+    @PutMapping("/{id}")
+    public Produto atualizar(@PathVariable Long id, @RequestBody Produto produto) {
+        return produtoService.atualizar(id, produto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Long id) {
+        produtoService.deletar(id);
+    }
+
 }
