@@ -1,8 +1,8 @@
-# Baseline de Projeto Java Spring Boot com JSF (PrimeFaces)
+# Baseline de Projeto Java Spring Boot
 
 ## ✨ Introdução
 
-Este trabalho tem como objetivo criar uma **baseline** para um projeto Java com **Spring Boot** no backend e **JSF (PrimeFaces)** como interface do usuário. Foi desenvolvida uma aplicação básica com funcionalidades de **CRUD para as entidades Cliente, Produto e Pedido**.
+Este trabalho tem como objetivo criar uma **baseline** para um projeto Java com **Spring Boot**. Foi desenvolvida uma aplicação básica com funcionalidades de **CRUD para as entidades Cliente, Produto e Pedido**.
 
 ---
 
