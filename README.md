@@ -40,6 +40,32 @@ src/
  └── pom.xml                          <- Gerenciador de dependências
 ```
 
+```
+demo/
+    .
+    ├── controller
+    │   ├── ClienteController.java
+    │   ├── PedidoController.java
+    │   └── ProdutoController.java
+    ├── DemoApplication.java
+    ├── dto
+    │   └── PedidoDTO.java
+    ├── model
+    │   ├── Cliente.java
+    │   ├── Pedido.java
+    │   └── Produto.java
+    ├── repository
+    │   ├── ClienteRepository.java
+    │   ├── PedidoRepository.java
+    │   └── ProdutoRepository.java
+    └── service
+        ├── ClienteService.java
+        ├── PedidoService.java
+        └── ProdutoService.java
+  
+
+```
+
 ---
 
 ## 🚀 Controle de Versão (Git)
@@ -125,5 +151,222 @@ spring.jpa.show-sql=true
 
 ---
 
-Se quiser o arquivo `.zip` com esse projeto e a documentação pronta pra entregar, é só pedir!
+# 📘 API - Sistema de Pedidos
+
+API RESTful para gerenciamento de clientes, produtos e pedidos.
+
+---
+
+## 🔗 Base URL
+
+```
+http://localhost:8080
+```
+
+---
+
+## 📦 Endpoints
+
+---
+
+### 🧍 Clientes
+
+#### 🔹 Listar todos os clientes
+```http
+GET /clientes
+```
+**Resposta:** 200 OK  
+Lista todos os clientes cadastrados.
+
+---
+
+#### 🔹 Buscar cliente por ID
+```http
+GET /clientes/{id}
+```
+**Parâmetro:**
+- `id` (Long): ID do cliente
+
+**Resposta:** 200 OK ou 404 Not Found  
+Retorna o cliente correspondente.
+
+---
+
+#### 🔹 Criar novo cliente
+```http
+POST /clientes
+```
+**Body (JSON):**
+```json
+{
+  "nome": "João Silva",
+  "email": "joao@email.com"
+}
+```
+
+**Resposta:** 201 Created  
+Cliente criado com sucesso.
+
+---
+
+#### 🔹 Atualizar cliente
+```http
+PUT /clientes/{id}
+```
+**Parâmetro:**
+- `id` (Long): ID do cliente
+
+**Body (JSON):**
+```json
+{
+  "nome": "João Atualizado",
+  "email": "novo@email.com"
+}
+```
+
+**Resposta:** 200 OK  
+Cliente atualizado.
+
+---
+
+#### 🔹 Remover cliente
+```http
+DELETE /clientes/{id}
+```
+**Parâmetro:**
+- `id` (Long): ID do cliente
+
+**Resposta:** 204 No Content  
+Cliente removido com sucesso.
+
+---
+
+### 📦 Produtos
+
+#### 🔹 Listar todos os produtos
+```http
+GET /produtos
+```
+**Resposta:** 200 OK  
+Lista todos os produtos.
+
+---
+
+#### 🔹 Buscar produto por ID
+```http
+GET /produtos/{id}
+```
+**Parâmetro:**
+- `id` (Long): ID do produto
+
+**Resposta:** 200 OK ou 404 Not Found
+
+---
+
+#### 🔹 Criar novo produto
+```http
+POST /produtos
+```
+**Body (JSON):**
+```json
+{
+  "nome": "Teclado",
+  "preco": 99.90
+}
+```
+
+**Resposta:** 201 Created  
+Produto criado.
+
+---
+
+#### 🔹 Atualizar produto
+```http
+PUT /produtos/{id}
+```
+**Body (JSON):**
+```json
+{
+  "nome": "Teclado Mecânico",
+  "preco": 129.90
+}
+```
+
+**Resposta:** 200 OK  
+Produto atualizado.
+
+---
+
+#### 🔹 Remover produto
+```http
+DELETE /produtos/{id}
+```
+
+**Resposta:** 204 No Content
+
+---
+
+### 🧾 Pedidos
+
+#### 🔹 Listar todos os pedidos
+```http
+GET /pedidos
+```
+
+**Resposta:** 200 OK  
+Lista todos os pedidos.
+
+---
+
+#### 🔹 Buscar pedido por ID
+```http
+GET /pedidos/{id}
+```
+
+**Resposta:** 200 OK ou 404 Not Found
+
+---
+
+#### 🔹 Criar novo pedido
+```http
+POST /pedidos
+```
+**Body (JSON):**
+```json
+{
+  "clienteId": 1,
+  "itens": [
+    { "produtoId": 2, "quantidade": 3 }
+  ]
+}
+```
+
+**Resposta:** 201 Created  
+Pedido criado.
+
+---
+
+#### 🔹 Atualizar pedido
+```http
+PUT /pedidos/{id}
+```
+**Body (JSON):**
+```json
+{
+  "clienteId": 1,
+  "itens": [
+    { "produtoId": 3, "quantidade": 1 }
+  ]
+}
+```
+
+**Resposta:** 200 OK  
+Pedido atualizado.
+
+---
+
+#### 🔹 Remover pedido
+```http
+DELETE /pedidos/{id}
+```
 
